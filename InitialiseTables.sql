@@ -325,12 +325,12 @@ CREATE TABLE dbo.recommendation
   recommendation_id INT NOT NULL IDENTITY(1,1) PRIMARY KEY, -- primary key column
   valid_period INT NOT NULL, -- in days
   date_issued DATE NOT NULL,
-  user_account_id1 INT NOT NULL, -- foreign key column referencing user_account table
+  user_account_id INT NOT NULL, -- foreign key column referencing user_account table
   mall_id INT NOT NULL, -- foreign key column referencing mall table
   restaurant_outlet_id INT NOT NULL, -- foreign key column referencing restaurant_outlet table
   day_package_id INT NOT NULL, -- foreign key column referencing day_package table
   voucher_id INT NOT NULL, -- foreign key column referencing voucher table
-  FOREIGN KEY (user_account_id1) REFERENCES user_account(user_account_id),
+  FOREIGN KEY (user_account_id) REFERENCES user_account(user_account_id),
   FOREIGN KEY (mall_id) REFERENCES mall(mall_id),
   FOREIGN KEY (restaurant_outlet_id) REFERENCES restaurant_outlet(restaurant_outlet_id),
   FOREIGN KEY (day_package_id) REFERENCES day_package(day_package_id),
