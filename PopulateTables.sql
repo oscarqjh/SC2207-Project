@@ -554,16 +554,29 @@ GO
 -- Insert 10 sample rows into the user_relationship table
 INSERT INTO user_relationship (user_account_id1, user_account_id2, type)
 VALUES
-(1, 2, 'Friend'),
+(1, 2, 'Family'),
 (1, 3, 'Family'),
-(1, 4, 'Colleague'),
 (2, 3, 'Family'),
-(2, 4, 'Friend'),
-(3, 4, 'Acquaintance'),
-(3, 5, 'Friend'),
 (4, 5, 'Family'),
-(4, 6, 'Friend'),
-(5, 6, 'Acquaintance');
+(4, 6, 'Family'),
+(4, 7, 'Family'),
+(5, 6, 'Family'),
+(5, 7, 'Family'),
+(6, 7, 'Family'),
+(8, 9, 'Family'),
+(8, 10, 'Family'),
+(9, 10, 'Family'),
+(11, 12, 'Friend'),
+(11, 13, 'Friend'),
+(12, 13, 'Friend'),
+(14, 15, 'Friend'),
+(16, 17, 'Colleague'),
+(16, 18, 'Colleague'),
+(17, 18, 'Colleague'),
+(19, 20, 'Colleague'),
+(19, 21, 'Colleague'),
+(20, 21, 'Colleague');
+
 GO
 
 SELECT * from user_relationship
