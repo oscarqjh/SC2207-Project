@@ -14,5 +14,3 @@ WHERE EXISTS (
 )
 GROUP BY dp.description
 ORDER BY popularity DESC;
-
-

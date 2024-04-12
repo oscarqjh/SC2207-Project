@@ -33,4 +33,3 @@ GROUP BY combined.mall_id
 ORDER BY total_spent DESC;
 
 GO
-
