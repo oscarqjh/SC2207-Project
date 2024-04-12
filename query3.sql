@@ -12,3 +12,5 @@ WHERE mall_id = (SELECT most_popular_mall.mall_id
                       ON recommendation.recommendation_id = user_use_recommendation.recommendation_id
                       GROUP BY recommendation.mall_id
                       ORDER BY total_recommendations DESC) AS most_popular_mall);
+
+GO
