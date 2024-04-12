@@ -2,7 +2,7 @@ USE TestDB
 GO
 
 -- Q1. What is the most popular day packages where all participants are related to one another as either family members or members of the same club?
-SELECT dp.description, COUNT(*) AS popularity
+SELECT TOP 1 dp.description, COUNT(*) AS popularity
 FROM day_package dp
 WHERE EXISTS (
     SELECT 1
