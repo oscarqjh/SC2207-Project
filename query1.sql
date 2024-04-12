@@ -9,7 +9,7 @@ WHERE EXISTS (
     FROM day_package dp1
     JOIN day_package dp2 ON dp1.description = dp2.description AND dp1.day_package_id <> dp2.day_package_id
     JOIN user_relationship ur ON (ur.user_account_id1 = dp1.user_account_id AND ur.user_account_id2 = dp2.user_account_id)
-    WHERE ur.type IN ('family', 'same club')
+    WHERE dp1.description = dp.description AND ur.type IN ('family', 'same club')
     GROUP BY dp1.description
 )
 GROUP BY dp.description
