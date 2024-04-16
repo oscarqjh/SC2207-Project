@@ -387,3 +387,19 @@ CREATE TABLE dbo.mall_has_day_package
 GO
 
 
+-- Create a new table called 'user_use_day_package' in schema 'dbo'
+-- Drop the table if it already exists
+IF OBJECT_ID('dbo.user_use_day_package', 'U') IS NOT NULL
+DROP TABLE dbo.user_use_day_package
+GO
+-- Create the table in the specified schema
+CREATE TABLE dbo.user_use_day_package
+(
+  user_account_id INT NOT NULL, -- composite primary key column
+  day_package_id INT NOT NULL, -- composite primary key column
+  date_time_in DATETIME NOT NULL, -- composite primary key column
+  FOREIGN KEY (user_account_id) REFERENCES user_account(user_account_id),
+  FOREIGN KEY (day_package_id) REFERENCES day_package(day_package_id),
+  PRIMARY KEY (user_account_id, day_package_id)
+);
+GO
