@@ -132,4 +132,4 @@ SELECT
     END AS use_day_package,
     family_percentage AS frequency
 FROM FamilyRecord
-WHERE family_percentage > 50;
+WHERE family_percentage >= 50;
