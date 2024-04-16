@@ -4,11 +4,14 @@ GO
 -- Q2: Find families who frequently shopped and dined together, with or without day packages. As part of your output, indicate whether these families use day packages or not. "frequently" means at least 50% of the time.
 
 
+-- identify pairs of users who are family members
 WITH FamilyPairs AS (
     SELECT user_account_id1, user_account_id2
     FROM user_relationship
     WHERE type = 'family'
 ),
+
+-- find shopping activities where family members shopped together and count day package usage
 ShoppingTogether AS (
     SELECT
         fp.user_account_id1,
@@ -16,11 +19,20 @@ ShoppingTogether AS (
         sr.date_time_in,
         COUNT(DISTINCT uudp.day_package_id) as num_day_packages
     FROM FamilyPairs fp
-    JOIN shop_record sr ON fp.user_account_id1 = sr.user_account_id
-    JOIN shop_record sr2 ON fp.user_account_id2 = sr2.user_account_id AND sr.date_time_in = sr2.date_time_in AND sr.shop_id = sr2.shop_id
-    LEFT JOIN user_use_day_package uudp ON (fp.user_account_id1 = uudp.user_account_id OR fp.user_account_id2 = uudp.user_account_id) AND sr.date_time_in = uudp.date_time_in
+    JOIN shop_record sr ON
+        fp.user_account_id1 = sr.user_account_id
+    JOIN shop_record sr2 ON
+        fp.user_account_id2 = sr2.user_account_id AND
+        sr.date_time_in = sr2.date_time_in AND
+        sr.shop_id = sr2.shop_id
+    LEFT JOIN user_use_day_package uudp ON (
+            fp.user_account_id1 = uudp.user_account_id OR
+            fp.user_account_id2 = uudp.user_account_id
+        ) AND sr.date_time_in = uudp.date_time_in
     GROUP BY fp.user_account_id1, fp.user_account_id2, sr.date_time_in
 ),
+
+-- find dining activities where family members dined together and count day package usage
 DiningTogether AS (
     SELECT
         fp.user_account_id1,
@@ -28,11 +40,20 @@ DiningTogether AS (
         dr.date_time_in,
         COUNT(DISTINCT uudp.day_package_id) as num_day_packages
     FROM FamilyPairs fp
-    JOIN dine_record dr ON fp.user_account_id1 = dr.user_account_id
-    JOIN dine_record dr2 ON fp.user_account_id2 = dr2.user_account_id AND dr.date_time_in = dr2.date_time_in AND dr.restaurant_outlet_id = dr2.restaurant_outlet_id
-    LEFT JOIN user_use_day_package uudp ON (fp.user_account_id1 = uudp.user_account_id OR fp.user_account_id2 = uudp.user_account_id) AND dr.date_time_in = uudp.date_time_in
+    JOIN dine_record dr ON
+        fp.user_account_id1 = dr.user_account_id
+    JOIN dine_record dr2 ON
+        fp.user_account_id2 = dr2.user_account_id AND
+        dr.date_time_in = dr2.date_time_in AND
+        dr.restaurant_outlet_id = dr2.restaurant_outlet_id
+    LEFT JOIN user_use_day_package uudp ON (
+            fp.user_account_id1 = uudp.user_account_id OR
+            fp.user_account_id2 = uudp.user_account_id
+        ) AND dr.date_time_in = uudp.date_time_in
     GROUP BY fp.user_account_id1, fp.user_account_id2, dr.date_time_in
 ),
+
+-- combine shopping and dining activities to calculate total activities together
 TogetherActivity AS (
     SELECT
         user_account_id1,
@@ -56,6 +77,8 @@ TogetherActivity AS (
     ) AS CombinedActivities
     GROUP BY user_account_id1, user_account_id2, date_time_in
 ),
+
+-- count individual activities for each user
 IndividualActivity AS (
     SELECT user_account_id, date_time_in
     FROM shop_record
@@ -70,6 +93,8 @@ IndividualActivityCount AS (
     FROM IndividualActivity
     GROUP BY user_account_id
 ),
+
+-- summarize family activities together
 FamilyTogether AS (
     SELECT
         user_account_id1,
@@ -79,6 +104,8 @@ FamilyTogether AS (
     FROM TogetherActivity
     GROUP BY user_account_id1, user_account_id2
 ),
+
+-- calculate the percentage of activities done together by each family pair
 FamilyRecord AS (
     SELECT
         ft.user_account_id1,
@@ -94,6 +121,8 @@ FamilyRecord AS (
     JOIN IndividualActivityCount iac ON ft.user_account_id1 = iac.user_account_id
     JOIN IndividualActivityCount iac2 ON ft.user_account_id2 = iac2.user_account_id
 )
+
+-- output family pairs who frequently shopped and dined together, with or without day packages
 SELECT
     user_account_id1,
     user_account_id2,
