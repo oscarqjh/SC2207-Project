@@ -1,11 +1,9 @@
 use TestDB
-GO
 
 -- Q4. Compulsive shoppers are those who have visited a certain mall more than 5 times within a certain
 -- period of time. Find the youngest compulsive shoppers and the amount they spent in total during
 -- December 2023.
 
-GO
 -- Old query
 /*
 SELECT TOP 3 X.user_account_id, X.total_spent, user_account.dob
@@ -21,7 +19,6 @@ ON user_account.user_account_id = X.user_account_id
 ORDER BY user_account.dob DESC;
 */
 
-GO
 -- Show all shopping records and the malls visited in Dec 2023
 SELECT X.user_account_id, SUM(X.amount_spent) AS total_spent, shop.mall_id, COUNT(*) AS times_visited
 FROM shop INNER JOIN (
