@@ -1,6 +1,7 @@
 USE TestDB
 GO
 
+
 WITH FamilyPairs AS (
     SELECT user_account_id1, user_account_id2
     FROM user_relationship
@@ -74,7 +75,7 @@ FamilyTogether AS (
         SUM(num_day_packages) AS num_day_packages,
         COUNT(date_time_in) AS num_times
     FROM TogetherActivity
-    GROUP BY user_account_id1, user_account_id2, num_day_packages
+    GROUP BY user_account_id1, user_account_id2
 ),
 FamilyRecord AS (
     SELECT
@@ -84,9 +85,9 @@ FamilyRecord AS (
         ft.num_times AS family_times,
         iac.num_times AS user1_times,
         iac2.num_times AS user2_times,
-        ft.num_times / iac.num_times AS user1_ratio,
-        ft.num_times / iac2.num_times AS user2_ratio,
-        ft.num_times / (iac.num_times + iac2.num_times - ft.num_times) AS family_ratio
+        CAST(ft.num_times AS FLOAT) / iac.num_times * 100 AS user1_percentage,
+        CAST(ft.num_times AS FLOAT) / iac2.num_times * 100 AS user2_percentage,
+        CAST(ft.num_times AS FLOAT) / (iac.num_times + iac2.num_times - ft.num_times) * 100 AS family_percentage
     FROM FamilyTogether ft
     JOIN IndividualActivityCount iac ON ft.user_account_id1 = iac.user_account_id
     JOIN IndividualActivityCount iac2 ON ft.user_account_id2 = iac2.user_account_id
@@ -94,7 +95,10 @@ FamilyRecord AS (
 SELECT
     user_account_id1,
     user_account_id2,
-    num_day_packages,
-    family_ratio
+    CASE
+        WHEN num_day_packages > 0 THEN 'Yes'
+        ELSE 'No'
+    END AS use_day_package,
+    family_percentage AS frequency
 FROM FamilyRecord
-WHERE family_ratio > 50;
+WHERE family_percentage > 50;
