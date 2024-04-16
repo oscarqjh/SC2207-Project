@@ -5,20 +5,19 @@ GO
 -- in some other malls.
 
 -- users who have dined in all the restaurants in some malls, A
-    select dr.user_account_id
-    from (dine_record as dr join restaurant_outlet as ro on dr.restaurant_outlet_id = ro.restaurant_outlet_id)
-    group by dr.user_account_id, ro.mall_id
-    having count(distinct ro.restaurant_outlet_id) = (select count(distinct restaurant_outlet_id)
-    from restaurant_outlet
-    where mall_id = ro.mall_id)
+select dr.user_account_id
+from (dine_record as dr join restaurant_outlet as ro on dr.restaurant_outlet_id = ro.restaurant_outlet_id)
+group by dr.user_account_id, ro.mall_id
+having count(distinct ro.restaurant_outlet_id) = (select count(distinct restaurant_outlet_id)
+from restaurant_outlet
+where mall_id = ro.mall_id)
 
-INTERSECT
-    -- A n B gives the answer
+INTERSECT -- A n B gives the answer
 
-    -- users who have never dined in any restaurants in some other malls, B
-    select ua.user_account_id
-    from user_account as ua
-    where ua.user_account_id in 
+-- users who have never dined in any restaurants in some other malls, B
+select ua.user_account_id
+from user_account as ua
+where ua.user_account_id in 
     (select dr.user_account_id
     from dine_record as dr join restaurant_outlet as ro on dr.restaurant_outlet_id = ro.restaurant_outlet_id
     group by dr.user_account_id
