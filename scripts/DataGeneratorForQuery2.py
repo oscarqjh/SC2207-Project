@@ -4,7 +4,7 @@ import random
 
 def generate_data(member_A, member_B):
     restaurant = random.randint(1, 9)
-    date = f"{random.randint(2023, 2024)}-{random.randint(1, 12)}-{random.randint(1, 28)}"
+    date = f"{random.randint(2023, 2024)}-{12}-{random.randint(1, 28)}"
     hrs = random.randint(1, 3)
     in_hr = random.randint(7, 20)
     in_min = random.randint(0, 59)
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     #     a, b = generate_data(37, 40)
     #     print(a, end=",\n")
     #     print(b, end=",\n")
-    for i in range(10):
-        a, b = generate_data(39, 40)
+    for i in range(5):
+        a, b = generate_data(41, 42)
         print(a, end=",\n")
         print(b, end=",\n")
