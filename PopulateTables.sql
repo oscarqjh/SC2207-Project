@@ -352,9 +352,16 @@ VALUES
     ('Unprofessional behavior', 'Pending', '2024-04-15 16:00:00', 15),
     ('Item out of stock after ordering', 'Pending', '2024-04-16 17:00:00', 16),
     ('Unclean restroom', 'Pending', '2024-04-17 18:00:00', 17),
-    ('Poor customer service', 'Pending', '2024-04-18 19:00:00', 18),
+    ('Poor customer service', 'Pending', '2023-12-18 19:00:00', 18),
     ('Delayed response from support', 'Pending', '2024-04-19 20:00:00', 19),
-    ('Wrong item received', 'Pending', '2024-04-20 21:00:00', 20);
+    ('Wrong item received', 'Pending', '2023-12-21 21:00:00', 20),
+    ('Delayed response from support', 'Pending', '2024-04-19 20:00:00', 19),
+    ('Wrong item received', 'Pending', '2023-12-22 21:00:00', 15),
+    ('Delayed response from support', 'Pending', '2024-04-19 20:00:00', 19),
+    ('Wrong item received', 'Pending', '2023-12-20 21:00:00', 16),
+    ('Long waiting time', 'Pending', '2023-12-06 17:00:00', 6),
+    ('Billing discrepancy', 'Pending', '2023-12-07 18:00:00', 7),
+    ('Noisy environment', 'Pending', '2023-12-09 20:00:00', 9);
 GO
 
 SELECT *
@@ -509,7 +516,15 @@ VALUES
     (7, 7),
     (8, 8),
     (9, 9),
-    (10, 10);
+    (10, 10),
+    (18, 9),
+    (22, 8),
+    (20, 9),
+    (24, 9),
+    (25, 13),
+    (26, 13),
+    (27, 13);
+
 GO
 
 SELECT *
@@ -527,9 +542,9 @@ VALUES
     (15, 5),
     (16, 6),
     (17, 7),
-    (18, 8),
+    (21, 8),
     (19, 9),
-    (20, 10);
+    (23, 10);
 GO
 
 SELECT *
