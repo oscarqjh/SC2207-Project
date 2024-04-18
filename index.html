@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="NTU MH3511 Project">
+  <meta name="keywords" content="NTU, MH3511, Statistics, Project, R, Data Analysis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiffVoice</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">How You Distinguish People by Voice</h2>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://pufanyi.github.io">Pu Fanyi</a>*,</span>
+                <span class="author-block">
+                  <a href="https://github.com/jin-qingyang">Jin Qingyang</a>*,</span>
+                <span class="author-block">
+                  <a href="https://github.com/niyaojiayou">Soo Ying Xi</a>*,
+                </span>
+                <span class="author-block">
+                  <a href="https://github.com/shanyi26">Shan Yi</a>*,
+                </span>
+                <span class="author-block">
+                  <a href="https://github.com/Jennythz">Zhang Xintong</a>*
+                </span>
+              </div>
+
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">Nanyang Technological University, Singapore</span>
+              </div>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">* means equal contributions</span>
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- PDF Link. -->
+                  <span class="link-block">
+                    <a href="report/MH3511.pdf" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Report</span>
+                    </a>
+                  </span>
+                  <!-- Code Link. -->
+                  <span class="link-block">
+                    <a href="https://github.com/pufanyi/DiffVoice"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a href="https://huggingface.co/datasets/pufanyi/DiffVoice"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <img src="static/img/hf-logo.svg" alt="HF Logo">
+                      </span>
+                      <span>HuggingFace Dataset</span>
+                    </a>
+                  </span>
+                </div>
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+        <h2 class="subtitle has-text-centered">
+          People can generally distinguish the characteristics of a speaker by their voice. This project investigates how people identify others through specific features of certain vocal signals. We have released a new dataset, <a href="https://huggingface.co/datasets/pufanyi/DiffVoice">DiffVoice</a>, and explored the differences in voices emitted by different individuals using various statistical analysis methods.
+          <p>
+            <br>
+            <i>This project is for the course MH3511 Data Analysis with Computer, AY2023/24 Semester 2.</i>
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">The DiffVoice Dataset</h2>
+          <p>
+            The DiffVoice dataset is a collection of voice recordings from different individuals. The dataset contains
+            various features extracted from the voice signals, such as pitch, formants, and MFCCs. The dataset is
+            designed to help researchers explore the differences in voices emitted by different individuals and develop
+            models to distinguish between them.
+          </p>
+          <p>
+            The dataset is available on <a href="https://huggingface.co/datasets/pufanyi/DiffVoice">HuggingFace</a>, while a CSV version can be downloaded <a href="https://github.com/pufanyi/DiffVoice/tree/main/data/original">here</a>.
+          </p>
+          <img src="./static/img/dataset_description.png" alt="DiffVoice Dataset" class="dataset-image" style="width: 80%; display: block; margin: auto;" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@software{Pu_FYPMS_Final_Year_2023,
+  author  = {Pu, Fanyi and Jin, Qingyang and Soo, Ying Xi and Jiang, Jinyi},
+  month   = apr,
+  title   = {{FYPMS: Final Year Project Management System}},
+  year    = {2023}
+}</code></pre>
+    </div>
+  </section> -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="report/MH3511.pdf">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/pufanyi/DiffVoice" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                code</a> of this website,
+              we just ask that you link back to this page in the footer.
+              Please remember to remove the analytics code included in the header of the website which
+              you do not want on your website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
