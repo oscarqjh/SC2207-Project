@@ -2,4 +2,4 @@
 
 - [code](src)
 - [report](report/Lab5_SCSD_Team5.pdf)
-- [videos](videos)
+- [videos](https://youtu.be/XJqZTwaQ3Qs?si=yLpjkcT1lGIFCCwA)
